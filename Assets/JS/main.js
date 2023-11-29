@@ -189,3 +189,7 @@ function updatePageWithFiveDayForecast(forecastList) {
             const date = new Date(entry.dt * 1000);
             return date.toLocaleDateString('en-US', { weekday: 'short' }) === day;
         });
+        // Create a column for each day
+        const col = document.createElement("div");
+        col.classList.add("col");
+        col.innerHTML = `<h4>${day}</h4>`;
