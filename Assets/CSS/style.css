@@ -45,3 +45,13 @@ body{
     display: flex;
     margin-left: 138px;
 }
+
+/* Container for daily and forecast weather*/
+.row-weather {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-left: 449px;
+    margin-top: -272px;
+}
+
