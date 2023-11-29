@@ -30,3 +30,31 @@ document.getElementById("city-form").addEventListener("submit", async function (
         // Handle the error (display an error message to the user, etc.)
     }
 });
+
+// Function to save the searched city to the search history array
+function saveToSearchHistory(cityName) {
+    // Add the city to the search history array
+    searchHistory.push(cityName);
+
+    // Limit the search history to a certain number of items (e.g., 5)
+    if (searchHistory.length > 5) {
+        searchHistory.shift(); // Remove the oldest entry
+    }
+
+    // Save the search history to localStorage if you want to persist it across page reloads
+    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+}
+// Function to display the search history in the "search-history" section
+function displaySearchHistory() {
+    const searchHistoryList = document.getElementById("search-history-list");
+
+    // Clear previous content
+    searchHistoryList.innerHTML = "";
+
+    // Iterate through the search history array and create list items
+    searchHistory.forEach(city => {
+        const listItem = document.createElement("li");
+        listItem.textContent = city;
+        searchHistoryList.appendChild(listItem);
+    });
+}
