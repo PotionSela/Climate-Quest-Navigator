@@ -148,3 +148,5 @@ function init() {
         displaySearchHistory();
     }
 }
+// Call the init function to load search history on page load
+init();
