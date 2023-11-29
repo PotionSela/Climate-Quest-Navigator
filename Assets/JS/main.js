@@ -108,7 +108,19 @@ function updatePageWithWeatherData(weatherData) {
             wind: { speed },
         } = weatherData;
 
-      
+        // Function to convert Kelvin to Celsius
+        function convertKelvinToCelsius(kelvin) {
+            return kelvin - 273.15;
+        }
+
+        // Function to convert Celsius to Fahrenheit
+        function convertCelsiusToFahrenheit(celsius) {
+            return (celsius * 9 / 5) + 32;
+        }
+
+        // Convert temperature to Celsius and then to Fahrenheit, rounding to two decimal places
+        const tempCelsius = convertKelvinToCelsius(temp);
+        const tempFahrenheit = convertCelsiusToFahrenheit(tempCelsius).toFixed(2);
 
         // Update the current weather section
         document.getElementById("current-weather").innerHTML = `
