@@ -181,4 +181,11 @@ function updatePageWithFiveDayForecast(forecastList) {
     const uniqueDays = [...new Set(forecastList.map(entry => {
         const date = new Date(entry.dt * 1000);
         return date.toLocaleDateString('en-US', { weekday: 'short' });
-    }))]};
+    }))];
+
+    // Iterate through the unique days and update the page
+    uniqueDays.slice(0, 5).forEach(day => {
+        const dayForecasts = forecastList.filter(entry => {
+            const date = new Date(entry.dt * 1000);
+            return date.toLocaleDateString('en-US', { weekday: 'short' }) === day;
+        });
