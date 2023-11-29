@@ -20,3 +20,28 @@ body{
     border: 2px solid #000000;
     opacity: 0.8;
 }
+
+/* Styling for search bar*/
+.custom-search-form {
+    max-width: 400px;
+    margin: 25px; /* Center the form on the page */
+}
+
+/* Past Searched List section*/
+#search-section {
+    margin-bottom: 20px;
+}
+
+/* Search History styling*/
+.custom-search-history {
+    max-width: 400px;
+    margin: 20px;
+    background-color: #52b5cb;
+    border: 2px solid #000000;
+}
+
+/* Search History clear button*/
+#clear-history-btn {
+    display: flex;
+    margin-left: 138px;
+}
