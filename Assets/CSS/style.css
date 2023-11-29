@@ -1,0 +1,22 @@
+/* Custom button color styles */
+.custom-color-btn {
+    background-color: #287da7;
+    color: #bedce4; /* Text color */
+    border: #000000;
+}
+
+/*Background coloring*/
+body{
+    color: #000000;
+    background-color: #54a2ea
+}
+
+/* Styling for page header*/
+#page-header {
+    margin-bottom: 25px;
+    background-color: #52b5cb;
+    height: 163px;
+    max-width: 1088px;
+    border: 2px solid #000000;
+    opacity: 0.8;
+}
