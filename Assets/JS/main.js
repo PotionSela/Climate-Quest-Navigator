@@ -169,3 +169,16 @@ async function getFiveDayForecast(cityName) {
         // Handle the error (display an error message to the user, etc.)
     }
 }
+
+// Function to update the page with the 5-day forecast
+function updatePageWithFiveDayForecast(forecastList) {
+    const forecastRow = document.getElementById("forecast-row");
+
+    // Clear previous content
+    forecastRow.innerHTML = "";
+
+    // Extract unique days from the forecast list
+    const uniqueDays = [...new Set(forecastList.map(entry => {
+        const date = new Date(entry.dt * 1000);
+        return date.toLocaleDateString('en-US', { weekday: 'short' });
+    }))]};
