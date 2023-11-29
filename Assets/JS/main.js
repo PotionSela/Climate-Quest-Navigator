@@ -96,3 +96,55 @@ async function getWeatherData(cityName) {
         // Handle the error (display an error message to the user, etc.)
     }
 }
+
+// Function to update the page with weather data
+function updatePageWithWeatherData(weatherData) {
+    // Check if weatherData has the expected structure
+    if (weatherData && weatherData.name && weatherData.main && weatherData.weather && weatherData.weather.length > 0 && weatherData.wind) {
+        const {
+            name,
+            main: { temp, humidity },
+            weather: [{ description, icon }],
+            wind: { speed },
+        } = weatherData;
+
+        // Function to convert Kelvin to Celsius
+        function convertKelvinToCelsius(kelvin) {
+            return kelvin - 273.15;
+        }
+
+        // Function to convert Celsius to Fahrenheit
+        function convertCelsiusToFahrenheit(celsius) {
+            return (celsius * 9 / 5) + 32;
+        }
+
+        // Convert temperature to Celsius and then to Fahrenheit, rounding to two decimal places
+        const tempCelsius = convertKelvinToCelsius(temp);
+        const tempFahrenheit = convertCelsiusToFahrenheit(tempCelsius).toFixed(2);
+
+        // Update the current weather section
+        document.getElementById("current-weather").innerHTML = `
+            <h2>${name} Weather</h2>
+            <div>
+                <p>Temperature: ${tempFahrenheit} &deg;F</p>
+                <p>Humidity: ${humidity}%</p>
+                <p>Weather: ${description}</p>
+                <img src="http://openweathermap.org/img/w/${icon}.png" alt="${description} icon">
+                <p>Wind Speed: ${speed} m/s</p>
+            </div>
+        `;
+    } else {
+        console.error("Invalid weather data structure:", weatherData);
+        // Handle the error (display an error message to the user, etc.)
+    }
+}
+
+// Function to initialize the page with the search history from localStorage
+function init() {
+    const storedSearchHistory = localStorage.getItem("searchHistory");
+
+    if (storedSearchHistory) {
+        searchHistory = JSON.parse(storedSearchHistory);
+        displaySearchHistory();
+    }
+}
