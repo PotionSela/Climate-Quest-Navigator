@@ -150,3 +150,22 @@ function init() {
 }
 // Call the init function to load search history on page load
 init();
+
+// Function to fetch and display the 5-day forecast
+async function getFiveDayForecast(cityName) {
+    const forecastApiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${APIWeatherKey}`;
+
+    try {
+        const response = await fetch(forecastApiUrl);
+        if (!response.ok) {
+            throw new Error("Failed to fetch 5-day forecast");
+        }
+
+        const forecastData = await response.json();
+        updatePageWithFiveDayForecast(forecastData.list);
+        console.log("Forecast Data:", forecastData);
+    } catch (error) {
+        console.error("Error fetching 5-day forecast:", error);
+        // Handle the error (display an error message to the user, etc.)
+    }
+}
