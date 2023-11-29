@@ -58,3 +58,15 @@ function displaySearchHistory() {
         searchHistoryList.appendChild(listItem);
     });
 }
+
+// Add event listener for the "Clear History" button
+document.getElementById("clear-history-btn").addEventListener("click", function () {
+    // Clear the search history array
+    searchHistory = [];
+
+    // Update the displayed search history
+    displaySearchHistory();
+
+    // Optionally, you can clear the localStorage as well
+    localStorage.removeItem("searchHistory");
+});
