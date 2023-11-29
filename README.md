@@ -1,6 +1,7 @@
 # Climate-Quest-Navigator
 Never Fear! Weather predictions are here! On this app you can easily find the weather in a city near you!
-<img src="./Assets/Images/">
+<img src="./Assets/Images/Climate-Quest-Nav-img.png">
+![Climate Quest screenshot](./Assets/Images/Climate-Quest-Nav-img.png)
 
 
 ## Introduction
