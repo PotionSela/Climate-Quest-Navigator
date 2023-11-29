@@ -55,3 +55,8 @@ body{
     margin-top: -272px;
 }
 
+/* Daily weather styling*/
+.daily-weather {
+    flex-wrap: wrap;
+}
+
