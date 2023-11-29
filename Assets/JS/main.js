@@ -70,3 +70,29 @@ document.getElementById("clear-history-btn").addEventListener("click", function 
     // Optionally, you can clear the localStorage as well
     localStorage.removeItem("searchHistory");
 });
+
+// Function to fetch weather data from the OpenWeatherMap API
+async function getWeatherData(cityName) {
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${APIWeatherKey}`;
+
+    try {
+        const response = await fetch(apiUrl);
+
+        if (!response.ok) {
+            throw new Error(`Weather data not available for ${cityName}`);
+        }
+
+        const weatherData = await response.json();
+
+        // Update the page with the received weather data
+        updatePageWithWeatherData(weatherData);
+
+        // Call the function to fetch and display the 5-day forecast
+        getFiveDayForecast(cityName);
+
+        console.log("Weather Data:", weatherData);
+    } catch (error) {
+        console.error("Error fetching weather data:", error);
+        // Handle the error (display an error message to the user, etc.)
+    }
+}
