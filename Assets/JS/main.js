@@ -193,3 +193,24 @@ function updatePageWithFiveDayForecast(forecastList) {
         const col = document.createElement("div");
         col.classList.add("col");
         col.innerHTML = `<h4>${day}</h4>`;
+        // Iterate through the forecasts for the day and add them to the column
+        dayForecasts.slice(0, 1).forEach(dayForecast => {
+            const temperature = (dayForecast.main.temp - 273.15) * 9 / 5 + 32;
+            const humidity = dayForecast.main.humidity;
+            const weatherDescription = dayForecast.weather[0].description;
+
+            const forecastItem = document.createElement("div");
+            forecastItem.classList.add("forecast-item");
+            forecastItem.innerHTML = `
+                <p>Temperature: ${temperature.toFixed(2)} &deg;F</p>
+                <p>Humidity: ${humidity}%</p>
+                <p>Weather: ${weatherDescription}</p>
+            `;
+
+            col.appendChild(forecastItem);
+        });
+
+        // Append the column to the forecast row
+        forecastRow.appendChild(col);
+    });
+}
